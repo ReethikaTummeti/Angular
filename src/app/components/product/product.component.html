@@ -1,0 +1,26 @@
+{{ detectChangeDetection() }}
+<div>
+  <img [src]="data.productImage" />
+  <h4>{{ data.productName | uppercase }}</h4>
+  <h4>{{ data.productPrice | currency : "INR" : "code" : "2.1-1" }}</h4>
+  <!-- by default, symbol is displayed when inr is mentioned, when code is mentioned, it displays inr 
+    2.1 means, min digits before decimal must be 2 and min digits after decimal must be 1  ,
+    --at the end "-1" means rounding off to one decimal-->
+  <app-product-price
+    [price]="data.productPrice"
+    [sellingPrice]="data.productSalePrice"
+    [code]="currencycode"
+  ></app-product-price>
+  <h5>{{ data.productStock }}</h5>
+  <!-- <h5>{{ data.productPrice | discount : data.productSalePrice }}</h5>
+  <h5>{{ data.productPrice | conversion : code | currency : code }}</h5> -->
+  <button
+    (click)="notifyParent($event)"
+    *ngIf="data.productStock > 0; else stock"
+  >
+    Add to cart
+  </button>
+</div>
+<ng-template #stock>
+  <p>Out of Stock</p>
+</ng-template>

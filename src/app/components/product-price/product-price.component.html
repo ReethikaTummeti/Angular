@@ -1,0 +1,7 @@
+{{ detectChangeDetection() }}
+<h5>
+  {{ sellingPrice | conversion : code | currency : code }}
+  <del>
+    {{ price | conversion : code | currency : code }}
+  </del>
+</h5>

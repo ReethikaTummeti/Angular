@@ -1,0 +1,55 @@
+tools:
+vs code
+node js
+angular cli (in vs code terminal, sudo npm install -g @angular/cli) --ng version to check the intsallation
+angular devtools(chrome extension)
+angular lamguage serice(vs code extension)
+
+1)sudo chown -R `whoami` ~/.npm   //to grant permissions
+
+2)ng new my-app //to create new application (angular:n, css)
+
+3)ng serve -o (run cd my-app before)
+
+react--one way binding
+angular--two way binding
+
+steps :
+creation
+registration
+usage
+
+core of angular:
+1)components - to derive reusable building blocks(custom html tags)
+2)directives - to derive user defined html attribute/property--used to enhance the functionality which is missing
+3)pipes - data transfomration/formatting
+4)services - http api calls/bussiness logic/data sharing
+
+@decorator() --defines the behaviour of a class
+--in declaration, //components,pipes,directives
+-- in imports, //modules
+-- in providers, //services
+
+execution flow:index.html->main.js->app.module.ts->bootstrap component(app.component.ts)
+
+--name of the selector is the html tag to be used
+
+
+to create functionality:(use ng generate cmds)
+ng g component name
+ng g pipe name
+ng g service name
+ng g directive name
+ng g guard name
+ng g module name
+ng g interceptor name
+
+
+--id in html==template-ref in angular
+
+pipes: for data tranformation and formatting without modifying the existing data
+input | function : param1 : param2
+
+--never use functions in html to display something..instead use pipes by creating using cmd:
+ng g pipe pipes/pipename and modify pipename.pipe.ts
+

@@ -1,0 +1,14 @@
+<h1>one way binding</h1>
+<h2>String interpolation</h2>
+<p>{{ demoData }}</p>
+<p>{{ demoData.toLowerCase() }}</p>
+<p>{{ 10 + 20 }}</p>
+<input type="text" value="{{ demoData }}" />
+
+<h3>property binding:</h3>
+<input type="text" [value]="demoData" />
+<!-- string interpolation converts everything into string, 
+    but property binding retains the datatype -->
+
+<h3>event binding:</h3>
+<button (click)="showAlert()"></button>
