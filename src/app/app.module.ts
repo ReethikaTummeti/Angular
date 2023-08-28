@@ -18,6 +18,9 @@ import { CurrencyComponent } from './components/currency/currency.component';
 import { NumbersOnlyDirective } from './directives/numbers-only.directive';
 import { ImgFallbackDirective } from './directives/img-fallback.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { GithubSearchComponent } from './containers/github-search/github-search.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ErrorPageComponent } from './containers/error-page/error-page.component';
 @NgModule({
   declarations: [
     //components,pipes,directives
@@ -32,6 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     CurrencyComponent,
     NumbersOnlyDirective,
     ImgFallbackDirective,
+    GithubSearchComponent,
+    ErrorPageComponent,
   ],
   imports: [
     //modules
@@ -39,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     errorTailorImports,
     HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [
     //services

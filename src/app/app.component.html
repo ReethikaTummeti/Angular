@@ -1,5 +1,5 @@
-<h1>gainsight</h1>
-<h3>reethika</h3>
+<!-- <h1>gainsight</h1>
+<h3>reethika</h3> -->
 <!-- <app-test></app-test>
 <app-product></app-product> -->
 <!-- <app-product-list></app-product-list> -->
@@ -8,5 +8,13 @@
 <input type="text" appNumbersOnly="4" />
 <input type="text" [appNumbersOnly]="count" />-->
 
-<app-currency (selectedCurrency)="getCode($event)"></app-currency>
-<app-product-list [code]="currencyCode"></app-product-list>
+<ul>
+  <li><a routerLink="/">Home</a></li>
+  <li><a routerLink="/products">Products</a></li>
+  <li><a routerLink="/checkout">Checkout</a></li>
+</ul>
+
+<app-currency></app-currency>
+<router-outlet></router-outlet>
+<!-- <app-github-search></app-github-search>
+<app-product-list></app-product-list> -->

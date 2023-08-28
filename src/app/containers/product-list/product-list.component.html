@@ -1,9 +1,11 @@
 <p>product-list works!</p>
 <button (click)="updatePrice()">Update Price</button>
-<div *ngFor="let item of pList">
-  <app-product
-    [data]="item"
-    (btnClick)="addItem($event)"
-    [currencycode]="code"
-  ></app-product>
+<div *ngIf="curr$ | async as code">
+  <div *ngFor="let item of pList">
+    <app-product
+      [data]="item"
+      (btnClick)="addItem($event)"
+      [currencycode]="code"
+    ></app-product>
+  </div>
 </div>

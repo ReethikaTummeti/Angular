@@ -53,3 +53,19 @@ input | function : param1 : param2
 --never use functions in html to display something..instead use pipes by creating using cmd:
 ng g pipe pipes/pipename and modify pipename.pipe.ts
 
+
+observables:
+1)hot: realtime updates --explicitly unsubsribe
+2)cold: one time activity --self-unsubscribe
+
+
+router:
+
+app component: layout component
+    static: header, footer, menu
+    dynamic: router
+
+
+using subscription object
+using pipe:takeUntildetsroyed
+using async pipe:automatic subscribe and unsubscribe
