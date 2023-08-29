@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs';
 import { SearchService } from 'src/app/services/search.service';
 
@@ -11,9 +12,19 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class GithubSearchComponent implements OnInit {
   search = new FormControl();
-  constructor(private searchService: SearchService) {}
+  constructor(
+    private searchService: SearchService,
+    private activeRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.activeRoute.queryParamMap.subscribe((par) => {
+      if (par.has('q')) {
+        this.search.setValue(par.get('q'));
+        this.getRepos(par.get('q') as string);
+      }
+    });
     this.search.valueChanges
       .pipe(
         debounceTime(500),
@@ -24,6 +35,8 @@ export class GithubSearchComponent implements OnInit {
       )
       .subscribe((value) => {
         console.log(value);
+        this.router.navigate([], { queryParams: { q: this.search.value } });
+        // this.router.navigateByUrl('/github?q='+this.search.value);
         // this.getRepos(value);
       });
   }

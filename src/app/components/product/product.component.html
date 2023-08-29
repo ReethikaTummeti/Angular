@@ -1,6 +1,10 @@
 {{ detectChangeDetection() }}
 <div>
-  <img [src]="data.productImage" />
+  <img
+    [src]="data.productImage"
+    [routerLink]="['/detail', data.productId]"
+    [queryParams]="{ size: 'm', rating: 4 }"
+  />
   <h4>{{ data.productName | uppercase }}</h4>
   <!-- <h4>{{ data.productPrice | currency : "INR" : "code" : "2.1-1" }}</h4> -->
   <!-- by default, symbol is displayed when inr is mentioned, when code is mentioned, it displays inr 

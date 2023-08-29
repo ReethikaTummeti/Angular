@@ -14,6 +14,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ProductType } from 'src/types';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -31,7 +32,8 @@ export class ProductListComponent {
   product$!: Observable<ProductType[]>;
   constructor(
     private productService: ProductService,
-    private currencyService: CurrencyService
+    private currencyService: CurrencyService,
+    private router: Router
   ) {
     this.curr$ = this.currencyService.currencyObservable;
     this.product$ = this.productService.getProducts();
@@ -67,6 +69,7 @@ export class ProductListComponent {
 
   addItem(data: any) {
     console.log('item added to the cart', data);
+    this.router.navigateByUrl('/cart');
   }
   updatePrice() {
     const product = this.pList[0];

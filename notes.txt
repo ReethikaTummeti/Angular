@@ -69,3 +69,21 @@ app component: layout component
 using subscription object
 using pipe:takeUntildetsroyed
 using async pipe:automatic subscribe and unsubscribe
+
+
+--router:
+1)defining routes/pages
+2)navigation links
+ --using routerLInk directive
+ --logical redirection: Router service
+3)passing params: url/route params
+ --path param: required
+ --query param: optional
+ 4)protected and private routes: router guards
+  --canActivate: entry : aunthentication
+  --canDeactivate: exit : save & exit
+
+
+modules types:
+ --eagerly loaded --all modules in imports of app.module.ts
+ --lazily loaded --on demand loading: code splitting
