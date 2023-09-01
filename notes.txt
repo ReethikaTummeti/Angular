@@ -87,3 +87,5 @@ using async pipe:automatic subscribe and unsubscribe
 modules types:
  --eagerly loaded --all modules in imports of app.module.ts
  --lazily loaded --on demand loading: code splitting
+
+interceptors: common logic to execute on all http requests

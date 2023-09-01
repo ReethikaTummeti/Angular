@@ -9,7 +9,6 @@
 <input type="text" [appNumbersOnly]="count" />-->
 
 <app-header></app-header>
-
 <ul>
   <li><a routerLink="/">Home</a></li>
   <li><a routerLink="/products">Products</a></li>
@@ -17,8 +16,10 @@
   <li><a routerLink="/user">Users</a></li>
   <li><a routerLink="/orders">Orders</a></li>
 </ul>
+<app-login-buttons></app-login-buttons>
 
 <app-currency></app-currency>
+<app-loader></app-loader>
 <router-outlet></router-outlet>
 <!-- <app-github-search></app-github-search>
 <app-product-list></app-product-list> -->

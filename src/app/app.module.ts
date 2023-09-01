@@ -17,12 +17,15 @@ import {
 import { CurrencyComponent } from './components/currency/currency.component';
 import { NumbersOnlyDirective } from './directives/numbers-only.directive';
 import { ImgFallbackDirective } from './directives/img-fallback.directive';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GithubSearchComponent } from './containers/github-search/github-search.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './containers/error-page/error-page.component';
 import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
 import { UiModule } from './ui/ui.module';
+import { LoginButtonsComponent } from './components/login-buttons/login-buttons.component';
+import { HttpLoaderInterceptor } from './services/http-loader.interceptor';
+import { LoaderModule } from './loader/loader.module';
 @NgModule({
   declarations: [
     //components,pipes,directives
@@ -40,6 +43,7 @@ import { UiModule } from './ui/ui.module';
     GithubSearchComponent,
     ErrorPageComponent,
     ProductDetailComponent,
+    LoginButtonsComponent,
   ],
   imports: [
     //modules
@@ -48,9 +52,15 @@ import { UiModule } from './ui/ui.module';
     errorTailorImports,
     HttpClientModule,
     AppRoutingModule,
+    LoaderModule,
   ],
   providers: [
     //services
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpLoaderInterceptor,
+      multi: true,
+    },
     provideErrorTailorConfig({
       errors: {
         useValue: {
