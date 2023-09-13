@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { ProductComponent } from './components/product/product.component';
@@ -26,6 +26,8 @@ import { UiModule } from './ui/ui.module';
 import { LoginButtonsComponent } from './components/login-buttons/login-buttons.component';
 import { HttpLoaderInterceptor } from './services/http-loader.interceptor';
 import { LoaderModule } from './loader/loader.module';
+import { SearchPipe } from './pipes/search.pipe';
+import { SortByPipe } from './pipes/sort-by.pipe';
 @NgModule({
   declarations: [
     //components,pipes,directives
@@ -44,6 +46,8 @@ import { LoaderModule } from './loader/loader.module';
     ErrorPageComponent,
     ProductDetailComponent,
     LoginButtonsComponent,
+    SearchPipe,
+    SortByPipe,
   ],
   imports: [
     //modules
@@ -53,6 +57,7 @@ import { LoaderModule } from './loader/loader.module';
     HttpClientModule,
     AppRoutingModule,
     LoaderModule,
+    FormsModule,
   ],
   providers: [
     //services

@@ -1,11 +1,51 @@
 <p>product-list works!</p>
 <button (click)="updatePrice()">Update Price</button>
-<div *ngIf="curr$ | async as code">
-  <div *ngFor="let item of pList">
-    <app-product
-      [data]="item"
-      (btnClick)="addItem($event)"
-      [currencycode]="code"
-    ></app-product>
+<select [(ngModel)]="SortByValue">
+  <option value="productSalePrice">Sort By Price</option>
+  <option value="productName">Sort By Name</option>
+</select>
+<input type="text" [(ngModel)]="query" />
+<div class="container text-center">
+  <div *ngIf="curr$ | async as code" class="row">
+    <div
+      *ngFor="let item of pList | search : query | sortBy : SortByValue"
+      class="col-3"
+    >
+      <app-product
+        [data]="item"
+        (btnClick)="addItem($event)"
+        [currencycode]="code"
+      ></app-product>
+    </div>
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li [ngClass]="{ disabled: pager.currentPage === 1 }">
+        <a (click)="setPage(1)">First</a>
+      </li>
+      <li [ngClass]="{ disabled: pager.currentPage === 1 }">
+        <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+      </li>
+      <li
+        *ngFor="let page of pager.pages"
+        [ngClass]="{ active: pager.currentPage === page }"
+      >
+        <a (click)="setPage(page)">{{ page }}</a>
+      </li>
+      <li [ngClass]="{ disabled: pager.currentPage === pager.totalPages }">
+        <a (click)="setPage(pager.currentPage + 1)">Next</a>
+      </li>
+      <li [ngClass]="{ disabled: pager.currentPage === pager.totalPages }">
+        <a (click)="setPage(pager.totalPages)">Last</a>
+      </li>
+    </ul>
+
+    <!-- <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav> -->
   </div>
 </div>
